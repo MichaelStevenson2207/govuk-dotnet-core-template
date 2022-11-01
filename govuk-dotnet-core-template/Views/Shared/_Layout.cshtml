@@ -12,34 +12,33 @@
 </head>
 <body class="govuk-template__body">
 <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-<a href="#main-content" class="govuk-skip-link" data-html2canvas-ignore="true">Skip to main content</a>
 
+    <a href="#main-content" class="govuk-skip-link" data-html2canvas-ignore="true">Skip to main content</a>
     <partial name="../Shared/_cookieConsentBanner.cshtml" />
     <partial name="../Shared/_header.cshtml" />
 
+    <div class="govuk-width-container">
+        <partial name="../Shared/_alpha.cshtml" />
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+            @RenderBody()
+        </main>
+    </div>
+    
+    <partial name="../Shared/_TimeOutControl.cshtml" />
+    <partial name="../Shared/_footer.cshtml" />
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="../Shared/_ValidationScriptsPartial.cshtml" />
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    
+    <partial name="../Shared/_initializeGOVUKFrontend.cshtml" />
+    
+    <script src="~/js/addresslookup.js" asp-append-version="true"></script>
+    <script src="~/js/loadspinner.js" asp-append-version="true"></script>
+    <script src="~/js/moment.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.modal.js" asp-append-version="true"></script>
+    <script src="~/js/inactivity-alert.js" asp-append-version="true"></script>
 
-<div class="govuk-width-container">
-    <partial name="../Shared/_alpha.cshtml" />
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-        @RenderBody()
-    </main>
-</div>
-
-<partial name="../Shared/_TimeOutControl.cshtml" />
-<partial name="../Shared/_footer.cshtml" />
-
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-
-@await RenderSectionAsync("Scripts", required: false)
-    <script src="~/js/govuk.js"></script>
-
-<script>
-    window.GOVUKFrontend.initAll()
-  </script>
-<script src="~/js/addresslookup.js" asp-append-version="true"></script>
-<script src="~/js/loadspinner.js" asp-append-version="true"></script>
-<script src="~/js/moment.js" asp-append-version="true"></script>
-<script src="~/js/jquery.modal.js" asp-append-version="true"></script>
-<script src="~/js/inactivity-alert.js" asp-append-version="true"></script>
 </body>
 </html>

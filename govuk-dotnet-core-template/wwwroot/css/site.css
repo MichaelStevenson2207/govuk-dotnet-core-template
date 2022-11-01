@@ -7041,3 +7041,30 @@ x:-moz-any-link {
     white-space: nowrap;
     border: 0;
 }
+
+.link-input {
+    background: none;
+    border: none;
+    padding: 0 !important;
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-input:hover {
+    color: #001431;
+    text-decoration: underline;
+}
+
+.link-input-back-button {
+    background: none;
+    border: none;
+    color: #0b0c0c;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-input-back-button:hover {
+    color: #001431;
+    text-decoration: underline;
+}

@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>govuk_dotnet_core_template</RootNamespace>
+    <UserSecretsId>bfd18b64-49ef-4bd1-8df1-00f98a33890b</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

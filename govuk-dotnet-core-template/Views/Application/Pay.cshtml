@@ -1,0 +1,48 @@
+﻿@model govuk_dotnet_core_template.Models.BaseViewModel
+@{
+    ViewData["Title"] = "Pay";
+}
+
+<form method="post" action="@Url.Action("Pay","Application")">
+    @Html.AntiForgeryToken()
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                    <a href="" class="govuk-back-link">Back</a>
+
+                    <partial name="../Shared/_errorSummary.cshtml"/>
+
+                    <h1 class="govuk-heading-l">Billable items</h1>
+
+                    <table class="govuk-table">
+                        <thead>
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Citizen journey</th>
+                            <th scope="col" class="govuk-table__header">Price</th>
+                        </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                Renew your licence
+                            </td>
+                            <td class="govuk-table__cell">
+                                £ 30.00
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="govuk-inset-text">
+                        Refer to the Govuk testing guide to select the test card you want to use: <a href="https://docs.payments.service.gov.uk/testing_govuk_pay/" target="blank" rel="nofollow" class="govuk-link">https://docs.payments.service.gov.uk/testing_govuk_pay/</a>
+                        e.g. Use 4242424242424242 for VISA debit.
+                    </p>
+
+                    <div class="govuk-form-group">
+                        <input type="submit" id="btnContinueSave" value="Continue to payment" name="save" class="govuk-button" data-module="govuk-button"/>
+                    </div>
+                </div>
+            </div>
+</form>

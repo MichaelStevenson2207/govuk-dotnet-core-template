@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Start";
+}
+
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <partial name="../shared/_errorSummary.cshtml" />
+
+            <h1 class="govuk-heading-l">
+                Renew your driving licence
+            </h1>
+
+            <p class="govuk-body">
+                You cannot use this service to renew a lorry or bus driving licence. You can renew those licences by filling in and returning the renewal reminder form (DL1R)
+                if you've been sent one or filling in and returning a driving licence application form (DL2).
+            </p>
+
+            <p class="govuk-body">
+                You cannot use this service if your last licence was issued before 1 April 1999 and you haven’t had your identity checked. These licences can be renewed by
+                filling in and returning a driving licence application form (DL1).
+                DL1 and DL2 forms are available from Post Offices.
+            </p>
+
+            <a asp-action="Details" asp-controller="Application" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                Renew your driving licence online
+                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                </svg>
+            </a>
+
+            <h2 class="govuk-heading-m">What you need</h2>
+
+            <p class="govuk-body">To renew online, you need:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>a digital photo or photo code - look at the rules for digital photos before renewing your licence via the green link below </li>
+                <li>a credit or debit card (if payment is needed)</li>
+                <li>a valid email address</li>
+                <li>your NI driving licence number and expiry date - on the plastic card part of your driving licence – ‘5’ is the driving licence number and ‘4b’ the expiry date</li>
+            </ul>
+
+            <h2 class="govuk-heading-m">How long it takes</h2>
+
+            <p class="govuk-body">Your driving licence should arrive within 3 week2 if you apply online.</p>
+
+            <p class="govuk-body">You must send your old photocard licence to DVLA when you get your new licence. You’ll be told the address to use when you finish the application.</p>
+
+            <h2 class="govuk-heading-m"> Additional information</h2>
+
+            <p class="govuk-body">If you're unable to provide a digital photo, your licence can be renewed by:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>filling in and returning a driving licence application form (DL1) - this form is available from Post Offices</li>
+            </ul>
+
+            <p class="govuk-body">Watch the video on renewing your driving licence online:</p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/KS7Drka9bYc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+    </div>

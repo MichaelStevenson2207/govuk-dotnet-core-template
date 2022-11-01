@@ -3,57 +3,31 @@
 }
 
 <div class="govuk-grid-row">
-<div class="govuk-grid-column-two-thirds">
-        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-            <div class="govuk-accordion__section ">
-                <div class="govuk-accordion__section-header">
-                    <h2 class="govuk-accordion__section-heading">
-                        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                            Writing well for the web
-                        </span>
-                    </h2>
-                </div>
-                <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-                    <p class='govuk-body'>This is the content for Writing well for the web.</p>
-                </div>
-            </div>
-            <div class="govuk-accordion__section ">
-                <div class="govuk-accordion__section-header">
-                    <h2 class="govuk-accordion__section-heading">
-                        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                            Writing well for specialists
-                        </span>
-                    </h2>
-                </div>
-                <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-                    <p class='govuk-body'>This is the content for Writing well for specialists.</p>
-                </div>
-            </div>
-            <div class="govuk-accordion__section ">
-                <div class="govuk-accordion__section-header">
-                    <h2 class="govuk-accordion__section-heading">
-                        <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-                            Know your audience
-                        </span>
-                    </h2>
-                </div>
-                <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
-                    <p class='govuk-body'>This is the content for Know your audience.</p>
-                </div>
-            </div>
-            <div class="govuk-accordion__section ">
-                <div class="govuk-accordion__section-header">
-                    <h2 class="govuk-accordion__section-heading">
-                        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
-                            How people read
-                        </span>
-                    </h2>
-                </div>
-                <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
-                    <p class='govuk-body'>This is the content for How people read.</p>
-                </div>
-            </div>
-        </div>
+    <div class="govuk-grid-column-two-thirds">
 
-</div>
+
+        <img src="~/assets/images/check-a-service-is-suitable-new.svg" />
+        
+        
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Citizen journey</th>
+                <th class="govuk-table__header" scope="col"></th>
+            </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Renew your licence</td>
+            <td class="govuk-table__cell">
+                <a asp-action="Start" asp-controller="Application" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                    Start journey
+                    <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                    </svg>
+                </a>
+            </td>
+            </tbody>
+        </table>
+    </div>
 </div>

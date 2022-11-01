@@ -1,0 +1,38 @@
+﻿@model govuk_dotnet_core_template.Models.DetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<form asp-action="Details">
+    @Html.AntiForgeryToken()
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+                <partial name="../Shared/_errorSummary.cshtml" />
+
+                <h1 class="govuk-heading-l">
+                    What is your name?
+                </h1>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" asp-for="Name">
+                        Name
+                    </label>
+                    <span asp-validation-for="Name" class="govuk-error-message"></span>
+                    <input class="govuk-input" asp-for="Name" type="text" spellcheck="false" autocomplete="given-name">
+                </div>
+                
+                <div class="govuk-form-group">
+                    <input type="submit" id="btnContinueSave" value="Save and continue" name="save" class="govuk-button" data-module="govuk-button" />
+                </div>
+
+                <div class="govuk-form-group">
+                    <input type="submit" id="btnSaveClose" value="Save and close" name="save" class="govuk-link link-input" />
+                </div>
+
+                <div class="govuk-form-group">
+                    <partial name="~/Views/Shared/_ContactUsForHelp.cshtml" />
+                </div>
+            </div>
+        </div>
+</form>

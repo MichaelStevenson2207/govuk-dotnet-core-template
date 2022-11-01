@@ -12,6 +12,8 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
     options.Secure = CookieSecurePolicy.Always;
 });
 
+builder.Services.AddHttpClient("GovPay", c => { c.BaseAddress = new Uri(builder.Configuration["govAddress"]); });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
