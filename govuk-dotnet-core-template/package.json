@@ -1,0 +1,14 @@
+{
+  "name": "govuk-dotnet-core-template",
+  "version": "1.0.0",
+  "description": "GovUk template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "govuk-frontend": "^4.3.1"
+  }
+}

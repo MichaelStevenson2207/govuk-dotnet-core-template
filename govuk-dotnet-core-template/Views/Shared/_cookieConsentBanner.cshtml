@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showBanner)
+{
+    <div class="govuk-cookie-banner" id="cookieConsent" data-nosnippet role="region" aria-label="Cookies on [name of service]">
+        <div class="govuk-cookie-banner__message govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on [name of service]</h2>
+
+                    <div class="govuk-cookie-banner__content">
+                        <p class="govuk-body">We use some essential cookies to make this service work.</p>
+                        <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="govuk-button-group">
+                <button value="accept" type="button" name="cookies" class="govuk-button" data-module="govuk-button" data-dismiss="alert" data-cookie-string="@cookieString">
+                    Accept analytics cookies
+                </button>
+                <button value="reject" type="button" name="cookies" class="govuk-button" data-module="govuk-button" data-dismiss="alert" data-cookie-string="@cookieString">
+                    Reject analytics cookies
+                </button>
+                <a class="govuk-link" href="@Url.Action("Cookies", "Home")">View cookies</a>
+            </div>
+        </div>
+    </div>
+
+@*    <div id="cookieConsent" class="alert cookie-banner alert-dismissible fade show" role="alert">
+        <div class="govuk-width-container">
+            <h2 class="govuk-heading-m">Tell us whether you accept cookies</h2>
+            <p class="govuk-body">We use <a class="govuk-link" href="@Url.Action("Index", "Home")">cookies to collect information</a> about how you use this website. We use this information to make the website work as well as possible and improve government services.</p>
+            <button type="button" class="govuk-button" data-dismiss="alert" data-cookie-string="@cookieString">
+                <span aria-hidden="true">Accept Cookies</span>
+            </button>
+        </div>
+    </div>*@
+    
+    <script>
+   (function ()
+   {
+      var button = document.querySelector("#cookieConsent button[data-cookie-string]");
+
+      button.addEventListener("click", function (event)
+      {
+         document.cookie = button.dataset.cookieString;
+      }, false);
+      
+      
+
+   })();
+    </script>
+} 
