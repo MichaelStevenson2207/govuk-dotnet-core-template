@@ -1,5 +1,5 @@
 if ($('form').length > 0) {
-    var submitted_1 = false;
+    let submitted_1 = false;
     $("form").bind("invalid-form.validate", function () {
         submitted_1 = true;
     });
@@ -9,21 +9,21 @@ if ($('form').length > 0) {
         errorClass: 'govuk-error-message',
         ignore: 'input[type=hidden]:not(.monthtimehidden)',
         highlight: function (element, errorClass, validClass) {
-            var el = $(element);
-            var fg = el.closest(".govuk-form-group");
+            let el = $(element);
+            let fg = el.closest(".govuk-form-group");
             fg.addClass("govuk-form-group--error");
             el.addClass("govuk-input--error");
         },
         unhighlight: function (element, errorClass, validClass) {
-            var el = $(element);
-            var fg = el.closest(".govuk-form-group");
+            let el = $(element);
+            let fg = el.closest(".govuk-form-group");
             fg.removeClass("govuk-form-group--error");
             el.removeClass("govuk-input--error");
         },
         showErrors: function (errorMap, errorList) {
             if (submitted_1) {
-                var summary_1 = '';
-                var errorHint_1 = '';
+                let summary_1 = '';
+                let errorHint_1 = '';
                 if (errorList.length > 0) {
                     $('.govuk-error-summary').show();
                 }
