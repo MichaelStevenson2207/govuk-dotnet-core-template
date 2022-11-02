@@ -97,11 +97,11 @@ namespace govuk_dotnet_core_template.Controllers
                 var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var dataObj = JObject.Parse(responseBody);
 
-                var nextUrl = dataObj["_links"]["next_url"]["href"].ToString();
+                var nextUrl = dataObj["_links"]?["next_url"]?["href"]?.ToString();
 
                 Response.Cookies.Append(
                     "paymentUrl",
-                    dataObj["_links"]["self"]["href"].ToString(),
+                    dataObj["_links"]?["self"]?["href"]?.ToString() ?? string.Empty,
                     new CookieOptions()
                     {
                         Path = "/",
@@ -110,7 +110,7 @@ namespace govuk_dotnet_core_template.Controllers
                     }
                 );
 
-                return Redirect(nextUrl);
+                if (nextUrl != null) return Redirect(nextUrl);
             }
             return View(model);
         }
@@ -119,7 +119,7 @@ namespace govuk_dotnet_core_template.Controllers
         public async Task<IActionResult> Complete()
         {
             //reading the cookie so we can make a call to see the status of the payment from gov pay.
-            string paymentUrl = Request.Cookies["paymentUrl"];
+            string? paymentUrl = Request.Cookies["paymentUrl"];
 
             var client = _clientFactory.CreateClient("GovPay");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _configuration["govPaySecretKey"]);
@@ -132,15 +132,17 @@ namespace govuk_dotnet_core_template.Controllers
                 var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var dataObj = JObject.Parse(responseBody);
 
-                var status = dataObj["state"]["status"].ToString();
+                var status = dataObj["state"]?["status"]?.ToString();
                 ViewData["status"] = status;
 
                 //if not success we assume payment has failed
                 if (status != "success")
                 {
-                    var message = dataObj["state"]["message"].ToString();
-                    var code = dataObj["state"]["code"].ToString();
-                    ModelState.AddModelError(code, message);
+                    var message = dataObj["state"]?["message"]?.ToString();
+                    var code = dataObj["state"]?["code"]?.ToString();
+                    if (code != null)
+                        if (message != null)
+                            ModelState.AddModelError(code, message);
                 }
                 else
                 {

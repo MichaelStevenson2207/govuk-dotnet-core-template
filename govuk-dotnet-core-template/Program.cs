@@ -12,7 +12,7 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
     options.Secure = CookieSecurePolicy.Always;
 });
 
-builder.Services.AddHttpClient("GovPay", c => { c.BaseAddress = new Uri(builder.Configuration["govAddress"]); });
+builder.Services.AddHttpClient("GovPay", c => { c.BaseAddress = new Uri(builder.Configuration["govAddress"] ?? string.Empty); });
 
 var app = builder.Build();
 
