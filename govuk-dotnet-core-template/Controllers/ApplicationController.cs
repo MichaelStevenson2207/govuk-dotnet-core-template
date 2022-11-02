@@ -1,11 +1,10 @@
 ﻿using System.Globalization;
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Text;
 using govuk_dotnet_core_template.Models;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace govuk_dotnet_core_template.Controllers
 {
@@ -19,7 +18,7 @@ namespace govuk_dotnet_core_template.Controllers
             _clientFactory = clientFactory;
             _configuration = configuration;
         }
-        
+
         [HttpGet]
         public IActionResult Start()
         {
