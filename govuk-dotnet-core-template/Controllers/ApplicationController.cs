@@ -75,7 +75,7 @@ namespace govuk_dotnet_core_template.Controllers
         {
             string baseUrl = $"{this.Request.Scheme}://{this.Request.Host}/application/complete";
 
-            GovUkPay payment = new GovUkPay
+            GovUkPay payment = new()
             {
                 Amount = 3000,
                 Reference = DateTime.Now.ToString(new CultureInfo("en-GB")),
@@ -93,26 +93,24 @@ namespace govuk_dotnet_core_template.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                using (HttpContent content = response.Content)
-                {
-                    var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var dataObj = JObject.Parse(responseBody);
+                using HttpContent content = response.Content;
+                var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var dataObj = JObject.Parse(responseBody);
 
-                    var nextUrl = dataObj["_links"]["next_url"]["href"].ToString();
+                var nextUrl = dataObj["_links"]["next_url"]["href"].ToString();
 
-                    Response.Cookies.Append(
-                        "paymentUrl",
-                        dataObj["_links"]["self"]["href"].ToString(),
-                        new CookieOptions()
-                        {
-                            Path = "/",
-                            HttpOnly = true,
-                            Secure = true
-                        }
-                    );
+                Response.Cookies.Append(
+                    "paymentUrl",
+                    dataObj["_links"]["self"]["href"].ToString(),
+                    new CookieOptions()
+                    {
+                        Path = "/",
+                        HttpOnly = true,
+                        Secure = true
+                    }
+                );
 
-                    return Redirect(nextUrl);
-                }
+                return Redirect(nextUrl);
             }
             return View(model);
         }
