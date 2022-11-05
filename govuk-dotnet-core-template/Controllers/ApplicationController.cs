@@ -1,7 +1,5 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Net.Http.Headers;
-using System.Security.Policy;
 using System.Text;
 using govuk_dotnet_core_template.Models;
 using Microsoft.AspNetCore.Mvc;
