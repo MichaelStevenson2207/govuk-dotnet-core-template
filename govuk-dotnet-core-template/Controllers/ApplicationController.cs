@@ -12,6 +12,7 @@ namespace govuk_dotnet_core_template.Controllers
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly IConfiguration _configuration;
+        private const string WhiteList = "publicapi.payments.service.gov.uk";
 
         public ApplicationController(IHttpClientFactory clientFactory, IConfiguration configuration)
         {
@@ -122,9 +123,17 @@ namespace govuk_dotnet_core_template.Controllers
             string? paymentUrl = Request.Cookies["paymentUrl"];
 
             var client = _clientFactory.CreateClient("GovPay");
+            
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _configuration["govPaySecretKey"]);
+            
             client.DefaultRequestHeaders.Add("Accept", "application/json");
 
+            // Match the incoming URL against a whitelist
+            if (paymentUrl == null || !paymentUrl.Contains(WhiteList))
+            {
+                return BadRequest();
+            }
+            
             var response = await client.GetAsync(paymentUrl);
 
             if (response.IsSuccessStatusCode)
@@ -140,8 +149,7 @@ namespace govuk_dotnet_core_template.Controllers
                 {
                     var message = dataObj["state"]?["message"]?.ToString();
                     var code = dataObj["state"]?["code"]?.ToString();
-                    if (code != null)
-                        if (message != null)
+                    if (code != null && message != null)
                             ModelState.AddModelError(code, message);
                 }
                 else
