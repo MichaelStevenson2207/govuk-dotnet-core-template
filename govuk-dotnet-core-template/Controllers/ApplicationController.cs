@@ -1,5 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Net.Http.Headers;
+using System.Security.Policy;
 using System.Text;
 using govuk_dotnet_core_template.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -122,10 +124,15 @@ namespace govuk_dotnet_core_template.Controllers
             //reading the cookie so we can make a call to see the status of the payment from gov pay.
             string? paymentUrl = Request.Cookies["paymentUrl"];
 
-            // Match the incoming URL against a whitelist
-            if (paymentUrl == null || !paymentUrl.Contains(WhiteList))
+            if (paymentUrl != null)
             {
-                return BadRequest();
+                Uri remoteUrl = new Uri(paymentUrl);
+                string remoteHost = remoteUrl.Host;
+
+                if (!WhiteList.Contains(remoteHost))
+                {
+                    return BadRequest();
+                }
             }
 
             var client = _clientFactory.CreateClient("GovPay");
