@@ -122,18 +122,18 @@ namespace govuk_dotnet_core_template.Controllers
             //reading the cookie so we can make a call to see the status of the payment from gov pay.
             string? paymentUrl = Request.Cookies["paymentUrl"];
 
-            var client = _clientFactory.CreateClient("GovPay");
-            
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _configuration["govPaySecretKey"]);
-            
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-
             // Match the incoming URL against a whitelist
             if (paymentUrl == null || !paymentUrl.Contains(WhiteList))
             {
                 return BadRequest();
             }
-            
+
+            var client = _clientFactory.CreateClient("GovPay");
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _configuration["govPaySecretKey"]);
+
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+
             var response = await client.GetAsync(paymentUrl);
 
             if (response.IsSuccessStatusCode)
@@ -150,7 +150,7 @@ namespace govuk_dotnet_core_template.Controllers
                     var message = dataObj["state"]?["message"]?.ToString();
                     var code = dataObj["state"]?["code"]?.ToString();
                     if (code != null && message != null)
-                            ModelState.AddModelError(code, message);
+                        ModelState.AddModelError(code, message);
                 }
                 else
                 {
