@@ -2,7 +2,7 @@
 
 namespace govuk_dotnet_core_template.Models
 {
-    public class GovUkPay
+    public sealed class GovUkPay
     {
         [JsonProperty("amount")]
         public int Amount { get; set; }
