@@ -1,9 +1,19 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - govuk_dotnet_core_template</title>
+    <meta name="description" content="This is a dotnet template for GDS style site which can be reused on Github for free">
+    <meta property="og:url" content="https://gov.uk">
+    <link rel="canonical" href="https://gov.uk">
+    <meta property="og:title" content="Gov uk dotnet core gds template">
+    <meta property="og:description" content="This is a dotnet template for GDS style site">
+    <meta property="og:image" content="govuk-opengraph-image.png">
+    <meta property="og:image:alt" content="Gov uk template">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image"> 
     <link rel="apple-touch-icon" src="~/assets/images/govuk-apple-touch-icon.png" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon" />
@@ -34,11 +44,10 @@
     
     <partial name="../Shared/_initializeGOVUKFrontend.cshtml" />
     
-    <script src="~/js/addresslookup.js" asp-append-version="true"></script>
+    <script src="~/js/addresslookup.min.js" asp-append-version="true"></script>
     <script src="~/js/loadspinner.js" asp-append-version="true"></script>
     <script src="~/js/moment.js" asp-append-version="true"></script>
     <script src="~/js/jquery.modal.js" asp-append-version="true"></script>
     <script src="~/js/inactivity-alert.js" asp-append-version="true"></script>
-
 </body>
 </html>

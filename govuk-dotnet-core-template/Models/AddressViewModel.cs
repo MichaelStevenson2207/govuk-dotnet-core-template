@@ -2,7 +2,7 @@
 
 namespace govuk_dotnet_core_template.Models
 {
-    public class AddressViewModel
+    public sealed class AddressViewModel
     {
         public string? SearchAddress { get; set; }
         public string? SearchPostCode { get; set; }
