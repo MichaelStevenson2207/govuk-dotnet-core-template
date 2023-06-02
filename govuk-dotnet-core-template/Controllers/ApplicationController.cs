@@ -38,7 +38,7 @@ namespace govuk_dotnet_core_template.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Address");
+                return RedirectToAction(nameof(Address));
             }
 
             return View(model);
@@ -58,7 +58,25 @@ namespace govuk_dotnet_core_template.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Pay");
+                return RedirectToAction(nameof(Summary));
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Summary()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Summary(BaseViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction(nameof(Pay));
             }
 
             return View(model);
