@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "govuk-frontend": "^4.6.0",
-    "jquery-validation": "^1.19.5",
+    "jquery-validation": "^1.21.0",
     "jquery-validation-unobtrusive": "^4.0.0"
   }
 }
